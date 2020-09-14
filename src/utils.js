@@ -22,7 +22,7 @@ import {
     return [...Array(n).keys()];
   }
 
-  function getMonthName(number){
+  export function getMonthName(number){
     const monthMap = {
       0: "January",
       1:"February",
@@ -101,7 +101,7 @@ import {
   
       matrix.push(week);
     });
-    console.log(year, getMonthName(month), weekStartsOn)
+    // console.log(year, getMonthName(month), weekStartsOn)
     return {calendar:matrix, year, month:getMonthName(month)};
   }
   
