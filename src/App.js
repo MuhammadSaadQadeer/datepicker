@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import "./App.css";
 import { getCalendarData, getMonthName } from "./utils";
-import { isEqual, format, getMonth, getYear ,addYears} from "date-fns";
+import { isEqual, format, getMonth, getYear ,addYears, subYears} from "date-fns";
 
 function App() {
   const [month, setMonth] = useState(getMonth(new Date()));
   const [year, setYear] = useState(getYear(new Date()));
-
+  
   const incrementMonth = () => {
     let monthNumber = month;
     monthNumber++;
     setMonth(monthNumber);
     if (monthNumber > 11) {
+      setYear(getYear(addYears(new Date(year, month, 1), 1)))
       setMonth(0);
     }
   };
@@ -21,22 +22,28 @@ function App() {
     monthNumber--;
     setMonth(monthNumber);
     if (monthNumber < 0) {
+      setYear(getYear(subYears(new Date(year, month, 1), 1)))
       setMonth(11);
     }
   };
 
-  const incrementYear = () => {
-    // if month is greater than 11 than we will add year into current year
+  // const incrementYear = () => {
+  //   // if month is greater than 11 than we will add year into current year
 
-    if(month == 11){
-      console.log(new Date(year))
-       setYear(getYear(addYears(new Date(year, month, 1), 1)))
-    }
-  }
+  //   if(month == 11){
+  //     console.log(new Date(year))
+  //      setYear(getYear(addYears(new Date(year, month, 1), 1)))
+  //   }
 
-  const decrementYear = () => {
-    // if month is less than 0 than we will subtract year from current year
-  }
+  //   if(month < 0){
+  //     console.log(new Date(year))
+  //      setYear(getYear(subYears(new Date(year, month, 1), 1)))
+  //   }
+  // }
+
+  // const decrementYear = () => {
+  //   // if month is less than 0 than we will subtract year from current year
+  // }
   return (
     <div className="calendar-container">
       <div
@@ -51,7 +58,7 @@ function App() {
         <div style={{ color: "black", textAlign: "center" }}>
           {getMonthName(month)} {year}
         </div>
-        <button onClick={()=>{incrementMonth();incrementYear();}}>{">"}</button>
+        <button onClick={incrementMonth}>{">"}</button>
       </div>
 
       <div style={{ display: "flex", flexDirection: "row" }}>
@@ -71,6 +78,7 @@ function App() {
                     padding: 10,
                     color: !col.current ? "lightgray" : "black",
                     backgroundColor: col.today ? "aliceblue" : "",
+                    cursor:"pointer",
                   }}
                 >
                   {`${col.date}`}
