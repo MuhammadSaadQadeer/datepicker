@@ -37,14 +37,15 @@
   }
 }
 
-
 .calendar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding:50px;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 #date-labels:hover {
