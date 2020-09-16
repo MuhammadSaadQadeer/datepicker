@@ -1,0 +1,46 @@
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#date-labels:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.cal-week-days {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 18px;
+  width: 10px;
+  height: 10px;
+}
+
+.cal-month-year-changer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cal-day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  width: 10px;
+  height: 10px;
+}
+
+.cal-action-btn {
+  background: transparent;
+  border-radius: 4px;
+}

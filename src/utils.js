@@ -1,18 +1,18 @@
 import {
-  getYear,
-  getMonth,
   addDays,
-  startOfWeek,
   format,
-  isMonday,
-  isTuesday,
-  isWednesday,
-  isThursday,
+  getMonth,
+  getYear,
   isFriday,
+  isMonday,
   isSaturday,
   isSunday,
   isThisMonth,
+  isThursday,
   isToday,
+  isTuesday,
+  isWednesday,
+  startOfWeek,
 } from "date-fns";
 
 const rows = range(5);
@@ -21,6 +21,8 @@ const cols = range(7);
 function range(n) {
   return [...Array(n).keys()];
 }
+
+export const WEEK_DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 export function getMonthName(number) {
   const monthMap = {

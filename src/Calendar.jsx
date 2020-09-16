@@ -7,14 +7,15 @@ import {
   subYears,
 } from "date-fns";
 import React, { useState } from "react";
-import "./App.css";
-import { getCalendarData, getMonthName } from "./utils";
+import "./calendar.css";
+import { getCalendarData, getMonthName, WEEK_DAYS } from "./utils";
 
 function Calendar() {
   const [month, setMonth] = useState(getMonth(new Date()));
   const [year, setYear] = useState(getYear(new Date()));
   const [selected, setSelected] = useState(format(new Date(), "dd"));
-  const incrementMonth = () => {
+
+  const incrementMonthAndYear = () => {
     let monthNumber = month;
     monthNumber++;
     setMonth(monthNumber);
@@ -24,7 +25,7 @@ function Calendar() {
     }
   };
 
-  const decrementMonth = () => {
+  const decrementMonthAndYear = () => {
     let monthNumber = month;
     monthNumber--;
     setMonth(monthNumber);
@@ -35,89 +36,56 @@ function Calendar() {
   };
 
   return (
-    <div>
-      <div className="calendar-container">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 10,
-          }}
-        >
-          <div style={{ color: "black", textAlign: "center" }}>
-            {getMonthName(month)} {year}
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-            <button
-              style={{ background: "transparent", borderRadius: 4 }}
-              onClick={decrementMonth}
-            >
-              {"<"}
-            </button>
-            &nbsp;
-            <button
-              style={{ background: "transparent", borderRadius: 4 }}
-              onClick={incrementMonth}
-            >
-              {">"}
-            </button>
-          </div>
+    <div className="calendar-container">
+      {/* Month and Year Changer */}
+      <div className="cal-month-year-changer">
+        <div style={{ color: "black", textAlign: "center" }}>
+          {getMonthName(month)} {year}
         </div>
-
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((item) => {
-            return (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "center",
-                  padding: 18,
-                  width: 10,
-                  height: 10,
-                }}
-              >
-                {item}
-              </div>
-            );
-          })}
+        <div className="d-flex justify-content-space-evenly">
+          <button className="cal-action-btn" onClick={decrementMonthAndYear}>
+            {"<"}
+          </button>
+          &nbsp;
+          <button className="cal-action-btn" onClick={incrementMonthAndYear}>
+            {">"}
+          </button>
         </div>
-
-        {getCalendarData({
-          year: year,
-          month: month,
-          weekStartsOn: 0,
-        }).calendar.map((item) => {
-          return (
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              {item.map((col) => {
-                return (
-                  <div
-                    id="date-labels"
-                    onClick={() => setSelected(col.fulldate)}
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: 18,
-                      color: !col.current ? "lightgray" : "black",
-                      backgroundColor: isEqual(selected, col.fulldate)
-                        ? "aliceblue"
-                        : "",
-                      width: 10,
-                      height: 10,
-                    }}
-                  >
-                    {`${col.date}`}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
       </div>
+
+      <div className={"d-flex flex-direction-row"}>
+        {WEEK_DAYS.map((item) => (
+          <div className="cal-week-days">{item}</div>
+        ))}
+      </div>
+
+      {getCalendarData({
+        year: year,
+        month: month,
+        weekStartsOn: 0,
+      }).calendar.map((item) => {
+        return (
+          <div className={"d-flex flex-direction-row"}>
+            {item.map((col) => {
+              return (
+                <div
+                  id="date-labels"
+                  onClick={() => setSelected(col.fulldate)}
+                  className="cal-day"
+                  style={{
+                    color: !col.current ? "lightgray" : "black",
+                    backgroundColor: isEqual(selected, col.fulldate)
+                      ? "aliceblue"
+                      : "",
+                  }}
+                >
+                  {`${col.date}`}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 }
