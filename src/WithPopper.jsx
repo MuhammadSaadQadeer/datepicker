@@ -4,9 +4,9 @@ import Calendar from "./Calendar";
 
 function WithPopper(props) {
   const [visible, setVisibility] = useState(false);
-
   const [referenceRef, setReferenceRef] = useState(null);
   const [popperRef, setPopperRef] = useState(null);
+  const [inputDate, setInputDate] = useState();
 
   const { styles, attributes } = usePopper(referenceRef, popperRef, {
     placement: "auto",
@@ -33,10 +33,16 @@ function WithPopper(props) {
         type="text"
         placeholder="Calendar picker"
         style={{ height: 30, width: 500, marginTop: 50, padding: 10 }}
+        value={inputDate}
       />
 
       <div ref={setPopperRef} style={styles.popper} {...attributes.popper}>
-        {visible && <Calendar />}
+        {visible && (
+          <Calendar
+            setInputDate={setInputDate}
+            hideCalendar={() => setVisibility(false)}
+          />
+        )}
       </div>
     </React.Fragment>
   );

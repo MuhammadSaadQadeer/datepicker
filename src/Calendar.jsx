@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import "./calendar.css";
 import { getCalendarData, getMonthName, WEEK_DAYS } from "./utils";
 
-function Calendar() {
+function Calendar(props) {
   const [month, setMonth] = useState(getMonth(new Date()));
   const [year, setYear] = useState(getYear(new Date()));
   const [selected, setSelected] = useState(format(new Date(), "dd"));
@@ -70,7 +70,11 @@ function Calendar() {
               return (
                 <div
                   id="date-labels"
-                  onClick={() => setSelected(col.fulldate)}
+                  onClick={() => {
+                    setSelected(col.fulldate);
+                    props.setInputDate(col.fulldate);
+                    props.hideCalendar();
+                  }}
                   className="cal-day"
                   style={{
                     color: !col.current ? "lightgray" : "black",
