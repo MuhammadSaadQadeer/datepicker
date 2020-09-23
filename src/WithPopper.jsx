@@ -39,6 +39,7 @@ function WithPopper(props) {
       <div ref={setPopperRef} style={styles.popper} {...attributes.popper}>
         {visible && (
           <Calendar
+            format={"MM-dd-yyyy"}
             setInputDate={setInputDate}
             hideCalendar={() => setVisibility(false)}
           />

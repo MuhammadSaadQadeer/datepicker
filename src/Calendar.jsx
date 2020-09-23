@@ -72,7 +72,8 @@ function Calendar(props) {
                   id="date-labels"
                   onClick={() => {
                     setSelected(col.fulldate);
-                    props.setInputDate(col.fulldate);
+                    const formattedDate = format(col.fulldate, props.format);
+                    props.setInputDate(formattedDate);
                     props.hideCalendar();
                   }}
                   className="cal-day"
