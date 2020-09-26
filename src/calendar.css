@@ -1,7 +1,5 @@
 .calendar-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   background-color: white;
   border: 1px solid lightgray;
@@ -29,6 +27,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  padding: 0 10px;
 }
 
 .cal-day {

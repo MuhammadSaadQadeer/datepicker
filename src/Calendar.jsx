@@ -73,7 +73,7 @@ function Calendar(props) {
                   onClick={() => {
                     setSelected(col.fulldate);
                     const formattedDate = format(col.fulldate, props.format);
-                    props.setInputDate(formattedDate);
+                    props.onDateSelection(formattedDate);
                     props.hideCalendar();
                   }}
                   className="cal-day"
