@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { usePopper } from "react-popper";
 import "./App.css";
 import Calendar from "./Calendar";
@@ -10,6 +10,33 @@ function MainContainer(props) {
   const [referenceRef, setReferenceRef] = useState(null);
   const [popperRef, setPopperRef] = useState(null);
   const [inputDate, setInputDate] = useState();
+
+  const ref = useRef(null);
+  const escapeListener = useCallback((e) => {
+    if (e.key === "Escape") {
+      setVisibility(false);
+    }
+  }, []);
+  const clickListener = useCallback(
+    (e) => {
+      if (!ref.current.contains(e.target)) {
+        setVisibility(false);
+      }
+    },
+    [ref.current]
+  );
+
+  // Below is the 10 lines of code you need.
+  useEffect(() => {
+    // Attach the listeners on component mount.
+    document.addEventListener("click", clickListener);
+    document.addEventListener("keyup", escapeListener);
+    // Detach the listeners on component unmount.
+    return () => {
+      document.removeEventListener("click", clickListener);
+      document.removeEventListener("keyup", escapeListener);
+    };
+  }, []);
 
   const {
     placeholder = "MM-dd-yyyy",
@@ -32,6 +59,7 @@ function MainContainer(props) {
 
   return (
     <div
+      ref={ref}
       style={{
         display: "flex",
         justifyContent: "center",
