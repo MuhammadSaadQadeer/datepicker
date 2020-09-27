@@ -38,7 +38,7 @@ function MainContainer(props) {
         alignItems: "center",
         margin: 40,
         flexDirection: "column",
-        height: 300,
+        //height: 300,
         overflow: "auto",
       }}
     >

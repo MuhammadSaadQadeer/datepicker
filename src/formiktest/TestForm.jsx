@@ -8,8 +8,15 @@ const SignupSchema = Yup.object().shape({
 });
 
 const ValidationSchemaExample = () => (
-  <div>
-    <h1>Signup</h1>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+    }}
+  >
+    <h1>Test Form Date Picker</h1>
     <Formik
       initialValues={{
         startDate: "",
@@ -30,8 +37,17 @@ const ValidationSchemaExample = () => (
           {errors.startDate && touched.startDate ? (
             <div>{errors.startDate}</div>
           ) : null}
-          <br />
-          <button type="submit">Submit</button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <button style={{ padding: 10 }} type="submit">
+              Submit
+            </button>
+          </div>
         </Form>
       )}
     </Formik>

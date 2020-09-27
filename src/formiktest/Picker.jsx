@@ -20,7 +20,7 @@ const Picker = ({
         name={field.name}
         inputProps={{
           readOnly: true,
-          style: { width: 334 },
+          style: { width: 334, height: 30, padding: 5 },
           placeholder: placeholder,
           disabled: disabled,
         }}
