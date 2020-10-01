@@ -42,7 +42,7 @@ function Calendar(props) {
         <div style={{ color: "black", textAlign: "center" }}>
           {getMonthName(month)} {year}
         </div>
-        <div className="d-flex justify-content-space-evenly">
+        <div className="cal-d-flex cal-justify-content-space-evenly">
           <button className="cal-action-btn" onClick={decrementMonthAndYear}>
             {"<"}
           </button>
@@ -53,7 +53,7 @@ function Calendar(props) {
         </div>
       </div>
 
-      <div className={"d-flex flex-direction-row"}>
+      <div className={"cal-d-flex cal-flex-direction-row"}>
         {WEEK_DAYS.map((item) => (
           <div className="cal-week-days">{item}</div>
         ))}
@@ -65,7 +65,7 @@ function Calendar(props) {
         weekStartsOn: 0,
       }).calendar.map((item) => {
         return (
-          <div className={"d-flex flex-direction-row"}>
+          <div className={"cal-d-flex cal-flex-direction-row"}>
             {item.map((col) => {
               return (
                 <div

@@ -1,45 +1,45 @@
 /* CSS Utils */
 
-.d-flex {
+.cal-d-flex {
   display: flex;
 }
 
-.justify-content-center {
+.cal-justify-content-center {
   justify-content: center;
 }
 
-.justify-content-space-between {
+.cal-justify-content-space-between {
   justify-content: space-between;
 }
 
-.justify-content-space-evenly {
+.cal-justify-content-space-evenly {
   justify-content: space-evenly;
 }
 
-.justify-content-start {
+.cal-justify-content-start {
   justify-content: flex-start;
 }
 
-.justify-content-end {
+.cal-justify-content-end {
   justify-content: flex-end;
 }
 
-.align-items-center {
+.cal-align-items-center {
   align-items: center;
 }
 
-.align-items-start {
+.cal-align-items-start {
   align-items: flex-start;
 }
 
-.align-items-end {
+.cal-align-items-end {
   align-items: flex-end;
 }
 
-.flex-direction-row {
+.cal-flex-direction-row {
   flex-direction: row;
 }
 
-.flex-direction-column {
+.cal-flex-direction-column {
   flex-direction: column;
 }
