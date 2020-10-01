@@ -23,23 +23,23 @@ function range(n) {
 }
 
 export const WEEK_DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+const MONTHS_ = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 export function getMonthName(number) {
-  const monthMap = {
-    0: "January",
-    1: "February",
-    2: "March",
-    3: "April",
-    4: "May",
-    5: "June",
-    6: "July",
-    7: "August",
-    8: "September",
-    9: "October",
-    10: "November",
-    11: "December",
-  };
-  return monthMap[number];
+  return MONTHS_[number];
 }
 
 function getDayName(date) {
@@ -85,29 +85,18 @@ export function getCalendarData(
   rows.forEach((row) => {
     const week = [];
     cols.forEach((col) => {
-      if (isThisMonth(curDate)) {
-        week.push({
-          day: getDayName(curDate),
-          date: format(curDate, "dd"),
-          fulldate: curDate,
-          current: true,
-          today: isToday(curDate),
-        });
-      } else {
-        week.push({
-          day: getDayName(curDate),
-          date: format(curDate, "dd"),
-          fulldate: curDate,
-          current: false,
-          today: isToday(curDate),
-        });
-      }
-
+      week.push({
+        day: getDayName(curDate),
+        date: format(curDate, "dd"),
+        fulldate: curDate,
+        current: isThisMonth(curDate),
+        today: isToday(curDate),
+      });
       curDate = addDays(curDate, 1);
     });
 
     matrix.push(week);
   });
-  // console.log(year, getMonthName(month), weekStartsOn)
+
   return { calendar: matrix, year, month: getMonthName(month) };
 }

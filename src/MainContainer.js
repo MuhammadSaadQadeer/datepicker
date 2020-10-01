@@ -17,14 +17,11 @@ function MainContainer(props) {
       setVisibility(false);
     }
   }, []);
-  const clickListener = useCallback(
-    (e) => {
-      if (!ref.current.contains(e.target)) {
-        setVisibility(false);
-      }
-    },
-    [ref.current]
-  );
+  const clickListener = useCallback((e) => {
+    if (!ref.current.contains(e.target)) {
+      setVisibility(false);
+    }
+  }, []);
 
   // Below is the 10 lines of code you need.
   useEffect(() => {
@@ -36,7 +33,7 @@ function MainContainer(props) {
       document.removeEventListener("click", clickListener);
       document.removeEventListener("keyup", escapeListener);
     };
-  }, []);
+  }, [clickListener, escapeListener]);
 
   const {
     placeholder = "MM-dd-yyyy",
