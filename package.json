@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "date-fns": "^2.16.1",
     "formik": "^2.1.5",
+    "jsdoc": "^3.6.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-popper": "^2.2.3",

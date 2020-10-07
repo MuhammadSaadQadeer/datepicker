@@ -18,7 +18,7 @@ import {
 const rows = range(5);
 const cols = range(7);
 
-function range(n) {
+export function range(n) {
   return [...Array(n).keys()];
 }
 
@@ -42,7 +42,7 @@ export function getMonthName(number) {
   return MONTHS_[number];
 }
 
-function getDayName(date) {
+export function getDayName(date) {
   if (isMonday(date)) {
     return "MO";
   }

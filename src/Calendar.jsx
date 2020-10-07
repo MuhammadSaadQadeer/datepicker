@@ -8,12 +8,19 @@ import {
 } from "date-fns";
 import React, { useState } from "react";
 import "./calendar.css";
-import { getCalendarData, getMonthName, WEEK_DAYS } from "./utils";
+import useCalendarMatrix from "./hooks/usePlotCalendarMatrix";
+import { getMonthName, WEEK_DAYS } from "./utils";
 
 function Calendar(props) {
   const [month, setMonth] = useState(getMonth(new Date()));
   const [year, setYear] = useState(getYear(new Date()));
   const [selected, setSelected] = useState(format(new Date(), "dd"));
+
+  const {
+    calendar,
+    year: dayPickerYear,
+    month: dayPickerMonth,
+  } = useCalendarMatrix({ year, month });
 
   const incrementMonthAndYear = () => {
     let monthNumber = month;
@@ -59,11 +66,7 @@ function Calendar(props) {
         ))}
       </div>
 
-      {getCalendarData({
-        year: year,
-        month: month,
-        weekStartsOn: 0,
-      }).calendar.map((item) => {
+      {calendar.map((item) => {
         return (
           <div className={"cal-d-flex cal-flex-direction-row"}>
             {item.map((col) => {
@@ -84,7 +87,7 @@ function Calendar(props) {
                       : "",
                   }}
                 >
-                  {`${col.date}`}
+                  {`${col.day}`}
                 </div>
               );
             })}
