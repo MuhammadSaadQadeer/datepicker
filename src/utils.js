@@ -3,15 +3,8 @@ import {
   format,
   getMonth,
   getYear,
-  isFriday,
-  isMonday,
-  isSaturday,
-  isSunday,
   isThisMonth,
-  isThursday,
   isToday,
-  isTuesday,
-  isWednesday,
   startOfWeek,
 } from "date-fns";
 
@@ -42,35 +35,6 @@ export function getMonthName(number) {
   return MONTHS_[number];
 }
 
-export function getDayName(date) {
-  if (isMonday(date)) {
-    return "MO";
-  }
-  if (isTuesday(date)) {
-    return "TU";
-  }
-  if (isWednesday(date)) {
-    return "WED";
-  }
-  if (isThursday(date)) {
-    return "THU";
-  }
-  if (isFriday(date)) {
-    return "FRI";
-  }
-  if (isSaturday(date)) {
-    return "SAT";
-  }
-  if (isSunday(date)) {
-    return "SUN";
-  }
-}
-
-export function getCurrentDateWithWeek(year, month, weekStartsOn) {
-  const date = new Date(year, month);
-  return startOfWeek(date, { weekStartsOn });
-}
-
 export function getCalendarData(
   { year, month, weekStartsOn } = {
     year: getYear(new Date()),
@@ -86,7 +50,6 @@ export function getCalendarData(
     const week = [];
     cols.forEach((col) => {
       week.push({
-        day: getDayName(curDate),
         date: format(curDate, "dd"),
         fulldate: curDate,
         current: isThisMonth(curDate),

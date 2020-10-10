@@ -16,11 +16,7 @@ function Calendar(props) {
   const [year, setYear] = useState(getYear(new Date()));
   const [selected, setSelected] = useState(format(new Date(), "dd"));
 
-  const {
-    calendar,
-    year: dayPickerYear,
-    month: dayPickerMonth,
-  } = useCalendarMatrix({ year, month });
+  const { calendar } = useCalendarMatrix({ year, month });
 
   const incrementMonthAndYear = () => {
     let monthNumber = month;

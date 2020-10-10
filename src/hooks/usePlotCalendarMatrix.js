@@ -25,7 +25,7 @@ import { getMonthName, range } from "../utils";
  */
 
 function useCalendarMatrix(
-  { year, month, weekStartsOn, rows, cols } = {
+  { year, month, weekStartsOn } = {
     year: getYear(new Date()),
     month: getMonth(new Date()),
     weekStartsOn: 0,
@@ -37,9 +37,9 @@ function useCalendarMatrix(
   const date = new Date(year, month);
   let currentDate = startOfWeek(date, { weekStartsOn });
 
-  range(5).forEach((row) => {
+  range(5).forEach(() => {
     const week = [];
-    range(7).forEach((col) => {
+    range(7).forEach(() => {
       week.push({
         day: format(currentDate, "dd"),
         fulldate: currentDate,

@@ -71,7 +71,6 @@ function MainContainer(props) {
         <input
           ref={setReferenceRef}
           onClick={() => setVisibility(!visible)}
-          type="text"
           placeholder={placeholder}
           value={value}
           name={props.name}
