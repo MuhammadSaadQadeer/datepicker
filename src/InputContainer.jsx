@@ -3,7 +3,7 @@ import { usePopper } from "react-popper";
 import "./App.css";
 import Calendar from "./Calendar";
 
-function MainContainer(props) {
+function InputContainer(props) {
   // Props destructuring and their default values
 
   const [visible, setVisibility] = useState(false);
@@ -92,4 +92,4 @@ function MainContainer(props) {
   );
 }
 
-export default MainContainer;
+export default InputContainer;

@@ -1,5 +1,5 @@
 import React from "react";
-import MainContainer from "../MainContainer";
+import InputContainer from "../InputContainer";
 
 const Picker = ({
   label,
@@ -14,7 +14,7 @@ const Picker = ({
 }) => {
   return (
     <div>
-      <MainContainer
+      <InputContainer
         format={"dd/MM/yyyy"}
         placeholder={`Pick a date`}
         name={field.name}
@@ -25,10 +25,8 @@ const Picker = ({
           disabled: disabled,
         }}
         onDateSelection={(day) => {
-          console.log({ day });
           setFieldTouched(field.name, true);
           setFieldValue(field.name, day);
-          console.log(field);
         }}
         value={field.value}
       />

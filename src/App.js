@@ -1,11 +1,10 @@
 import React from "react";
 import "./App.css";
-import ValidationSchemaExample from "./formiktest/TestForm";
+import InputContainer from "./InputContainer";
 
 function App(props) {
   // Props destructuring and their default values
-
-  return <ValidationSchemaExample />;
+  return <InputContainer {...props} />;
 }
 
 export default App;
