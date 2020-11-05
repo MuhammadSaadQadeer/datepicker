@@ -1,20 +1,19 @@
 {
-  "name": "my-datepicker",
-  "version": "0.1.0",
-  "private": true,
+  "name": "simple-day-picker",
+  "version": "0.1.1",
+  "private": false,
+  "description": "Simple Date Picker for React with Popper",
   "dependencies": {
     "@popperjs/core": "^2.4.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "date-fns": "^2.16.1",
-    "formik": "^2.1.5",
     "jsdoc": "^3.6.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-popper": "^2.2.3",
-    "react-scripts": "3.4.3",
-    "yup": "^0.29.3"
+    "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
